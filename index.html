@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>成都 · 天府之国 | CHENGDU</title>
+<meta name="description" content="一座来了就不想走的城市——成都。看天府之国、川味火锅、市井烟火与千年人文。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23B8432F'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='%23F6F0E6' font-family='serif' font-weight='700'%3E蓉%3C/text%3E%3C/svg%3E">
+
+<!-- 字体：preconnect -> preload -> stylesheet -->
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="preconnect" href="https://sf3-scmcdn-cn.feishucdn.com" crossorigin>
+<link rel="preload" href="https://sf3-scmcdn-cn.feishucdn.com/obj/feishu-static/lark-miaoda-fonts/fonts/noto-serif-sc/6b0121a11792.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://sf3-scmcdn-cn.feishucdn.com/obj/feishu-static/lark-miaoda-fonts/fonts/noto-serif-sc/80c6d759a1d5.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap">
+
+<style>
+/* ===== 设计令牌 ===== */
+:root{
+  --red:#B8432F;         /* 成都红 */
+  --red-deep:#8F3322;
+  --ink:#221B15;         /* 墨色 */
+  --ink-soft:#4A3F35;
+  --paper:#F6F0E6;       /* 米纸 */
+  --paper-2:#EFE6D5;
+  --card:#FCF7EC;
+  --green:#5C7A52;       /* 竹绿 */
+  --green-soft:#E9EFE2;
+  --gold:#C9A227;
+  --line:rgba(34,27,21,.14);
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(34,27,21,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+
+/* 首行：窄屏优先 */
+/* ===== 顶部导航 ===== */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:transparent;color:#F6F0E6;
+  transition:background .35s, box-shadow .35s, color .35s;
+}
+.site-nav.scrolled{
+  background:rgba(34,27,21,.92);color:#F6F0E6;
+  box-shadow:0 2px 14px rgba(0,0,0,.28);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.06rem;letter-spacing:.04em}
+.brand .seal{
+  width:34px;height:34px;border-radius:9px;background:var(--red);color:#F6F0E6;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;
+}
+.nav-links{display:none;gap:26px;font-size:.95rem;letter-spacing:.03em}
+.nav-links a{opacity:.86;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-toggle{background:none;border:1px solid rgba(246,240,230,.5);border-radius:8px;color:inherit;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:49;background:rgba(34,27,21,.96);color:#F6F0E6;
+  flex-direction:column;align-items:center;justify-content:center;gap:26px;font-family:var(--serif);font-size:1.5rem;
+}
+.mobile-menu.show{display:flex}
+.mobile-menu a{opacity:.9}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* ===== Hero ===== */
+.hero{position:relative;height:100svh;min-height:560px;color:#F6F0E6;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,13,10,.30) 0%,rgba(18,13,10,.18) 40%,rgba(18,13,10,.72) 100%)}
+.hero-inner{position:relative;z-index:2;padding:0 0 84px;width:min(1120px,92vw);margin:0 auto}
+.hero-eyebrow{font-size:.82rem;letter-spacing:.34em;color:rgba(246,240,230,.9);margin-bottom:16px;text-transform:uppercase}
+.hero-title{font-family:var(--serif);font-weight:900;font-size:clamp(4rem,17vw,8.5rem);line-height:.95;letter-spacing:.06em}
+.hero-en{margin-top:8px;font-size:.95rem;letter-spacing:.3em;color:rgba(246,240,230,.92)}
+.hero-sub{margin-top:16px;font-size:clamp(1rem,3vw,1.3rem);max-width:32em;color:rgba(246,240,230,.95)}
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:999px;
+  font-size:.98rem;font-weight:600;cursor:pointer;border:1px solid transparent;transition:transform .18s, box-shadow .2s, background .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--red);color:#F6F0E6;box-shadow:0 8px 20px rgba(184,67,47,.35)}
+.btn-solid:hover{background:var(--red-deep)}
+.btn-ghost{background:transparent;border-color:rgba(246,240,230,.55);color:#F6F0E6}
+.btn-ghost:hover{border-color:#F6F0E6;background:rgba(246,240,230,.08)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(246,240,230,.85);font-size:.78rem;letter-spacing:.2em}
+.scroll-hint .dot{width:8px;height:8px;border-radius:50%;background:currentColor;animation:bob 1.8s infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(10px);opacity:.4}}
+
+/* ===== 通用章节 ===== */
+section{padding:72px 0}
+.sec-head{margin-bottom:38px}
+.sec-kicker{font-size:.82rem;letter-spacing:.3em;color:var(--red);text-transform:uppercase;font-weight:700}
+.sec-title{font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,5vw,2.6rem);margin-top:8px;letter-spacing:.02em}
+.sec-desc{margin-top:12px;color:var(--ink-soft);max-width:44em}
+
+/* ===== 名片 ===== */
+#profile{background:var(--paper)}
+.intro{font-size:1.06rem;color:var(--ink-soft);max-width:56em;line-height:1.9}
+.intro strong{color:var(--red);font-weight:700}
+.stats{display:grid;grid-template-columns:1fr;gap:16px;margin-top:36px}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;box-shadow:var(--shadow);
+}
+.stat .num{font-family:var(--serif);font-weight:900;font-size:1.9rem;color:var(--red);line-height:1.15}
+.stat .lab{margin-top:6px;font-size:.9rem;color:var(--ink-soft)}
+
+/* ===== 城市印象 ===== */
+#impression{background:var(--paper-2)}
+.kcards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 20px;
+  display:flex;flex-direction:column;gap:12px;transition:transform .22s, box-shadow .25s;
+}
+.kcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.kcard .ic{width:46px;height:46px;border-radius:12px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center}
+.kcard .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kcard h3{font-family:var(--serif);font-weight:700;font-size:1.18rem}
+.kcard p{font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+
+/* ===== 人文 ===== */
+#culture{background:var(--paper)}
+.culture-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.culture-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.culture-img img{width:100%;height:100%;object-fit:cover}
+.culture-body h3{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin-bottom:12px}
+.culture-body p{color:var(--ink-soft);line-height:1.9}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tag{font-size:.86rem;padding:7px 14px;border-radius:999px;background:var(--paper-2);color:var(--ink-soft);border:1px solid var(--line)}
+
+/* ===== 美食 ===== */
+#food{background:var(--paper-2)}
+.food-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.food-body h3{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin-bottom:12px}
+.food-body p{color:var(--ink-soft);line-height:1.9}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{font-size:.9rem;padding:8px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);transition:background .2s,color .2s}
+.chip:hover{background:var(--red);color:#F6F0E6}
+.food-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.food-img img{width:100%;height:100%;object-fit:cover}
+
+/* ===== 风景 ===== */
+#places{background:var(--paper)}
+.pcards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pcard{border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:4/3;box-shadow:var(--shadow);background:var(--ink)}
+.pcard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .cap{position:absolute;inset:auto 0 0 0;padding:26px 18px 16px;background:linear-gradient(180deg,transparent,rgba(18,13,10,.82));color:#F6F0E6}
+.pcard .cap h3{font-family:var(--serif);font-weight:700;font-size:1.15rem}
+.pcard .cap p{font-size:.8rem;opacity:.85;margin-top:2px}
+
+/* ===== 影像 ===== */
+#film{background:var(--ink);color:#F6F0E6}
+#film .sec-kicker{color:var(--gold)}
+#film .sec-desc{color:rgba(246,240,230,.75)}
+.player{
+  margin-top:28px;border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.4);
+  border:1px solid rgba(246,240,230,.12);
+}
+.player video{width:100%;display:block;aspect-ratio:16/9;background:#000;object-fit:cover}
+.film-note{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;font-size:.86rem;color:rgba(246,240,230,.7)}
+.film-note .n{display:inline-flex;align-items:center;gap:7px}
+.film-note .n svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== 页脚 ===== */
+footer{background:var(--ink);color:rgba(246,240,230,.75);padding:44px 0 40px}
+.foot-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.foot-brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;letter-spacing:.05em}
+.foot-brand .seal{display:inline-flex;width:26px;height:26px;border-radius:7px;background:var(--red);color:#F6F0E6;align-items:center;justify-content:center;font-size:.9rem;margin-right:8px}
+.foot-sub{font-size:.85rem;color:rgba(246,240,230,.6)}
+
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:20px;bottom:20px;z-index:40;width:46px;height:46px;border-radius:50%;
+  background:var(--red);color:#F6F0E6;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;
+  box-shadow:0 8px 22px rgba(184,67,47,.4);
+}
+#toTop.show{display:flex}
+#toTop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== 悬浮音乐播放器 ===== */
+.music-player{
+  position:fixed;left:20px;bottom:20px;z-index:42;max-width:calc(100vw - 92px);
+  display:flex;align-items:center;gap:12px;
+  background:rgba(34,27,21,.93);color:#F6F0E6;
+  border-radius:999px;padding:8px 8px 8px 14px;
+  border:1px solid rgba(246,240,230,.14);box-shadow:0 10px 28px rgba(0,0,0,.30);
+}
+.music-player .mi{width:34px;height:34px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex:none}
+.music-player .mi svg{width:18px;height:18px;fill:none;stroke:#F6F0E6;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.music-player .meta{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.music-player .t{font-size:.86rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-player .s{font-size:.72rem;color:rgba(246,240,230,.62);white-space:nowrap}
+.music-player .pp{width:40px;height:40px;border-radius:50%;background:var(--green);border:none;color:#F6F0E6;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;transition:background .2s}
+.music-player .pp:hover{background:#4C6645}
+.music-player .pp svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* 滚动揭示 */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-title{animation:none}
+}
+
+/* ===== 桌面扩展 ===== */
+@media (min-width:768px){
+  .nav-links{display:flex}
+  .nav-toggle{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .kcards{grid-template-columns:repeat(3,1fr)}
+  .culture-grid{grid-template-columns:1.1fr 1fr;gap:52px}
+  .food-grid{grid-template-columns:1fr 1.1fr;gap:52px}
+  .pcards{grid-template-columns:repeat(3,1fr)}
+  section{padding:96px 0}
+}
+@media (min-width:1024px){
+  .stats{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<header class="site-nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="seal">蓉</span><span>成都 · 天府之国</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#profile">名片</a>
+      <a href="#impression">印象</a>
+      <a href="#culture">人文</a>
+      <a href="#food">美食</a>
+      <a href="#places">风景</a>
+      <a href="#film">影像</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#profile">天府名片</a>
+  <a href="#impression">城市印象</a>
+  <a href="#culture">人文底蕴</a>
+  <a href="#food">食在成都</a>
+  <a href="#places">游在成都</a>
+  <a href="#film">影像成都</a>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <video autoplay muted loop playsinline preload="auto" poster="assets/poster.jpg" aria-label="成都城市宣传片">
+    <source src="cd1.mp4" type="video/mp4">
+    您的浏览器不支持视频播放，请使用现代浏览器查看。
+  </video>
+  <div class="veil"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">天府之国 · 中国 · 四川</div>
+    <h1 class="hero-title">成都</h1>
+    <div class="hero-en">CHENGDU · LAND OF ABUNDANCE</div>
+    <p class="hero-sub">一座来了就不想走的城市。慢下来，走进茶馆的盖碗茶、巷子里的火锅香，与延续千年的烟火气。</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#film">
+        <svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>观看影像
+      </a>
+      <a class="btn btn-ghost" href="#profile">开始探索</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span class="dot"></span>向下滑动</div>
+</section>
+
+<!-- ===== 名片 ===== -->
+<section id="profile">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">City Profile</div>
+      <h2 class="sec-title">天府名片</h2>
+      <p class="sec-desc">成都位于中国西南部、四川盆地西部，古称“锦官城”，因蜀锦、蜀绣而名，素有“天府之国”的美誉。</p>
+    </div>
+    <p class="intro reveal">
+      这里是川菜与火锅的故乡，是大熊猫的家园，也是中国首批国家历史文化名城。<strong>水旱从人、不知饥馑</strong>的都江堰滋润了两千余年；今天的成都，既是慢生活的样本，也是西南经济与文化的中心——连续多年位居新一线城市之首。
+    </p>
+    <div class="stats">
+      <div class="stat reveal"><div class="num">蓉城 · 锦官城</div><div class="lab">别称，天府之国</div></div>
+      <div class="stat reveal"><div class="num">约 1.43 万 km²</div><div class="lab">市域总面积</div></div>
+      <div class="stat reveal"><div class="num">超 2100 万</div><div class="lab">常住人口（2023年末）</div></div>
+      <div class="stat reveal"><div class="num">芙蓉 · 银杏</div><div class="lab">市花 · 市树</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 城市印象 ===== -->
+<section id="impression">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Impressions</div>
+      <h2 class="sec-title">成都六张名片</h2>
+      <p class="sec-desc">提到成都，你会想到什么？这些关键词，拼出这座城市的体温。</p>
+    </div>
+    <div class="kcards">
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="13" r="5"/><circle cx="15" cy="13" r="5"/><circle cx="12" cy="14.5" r="1.4"/><circle cx="12" cy="11" r="1"/><path d="M5.5 8.5 4 6M18.5 8.5 20 6"/></svg></div>
+        <h3>熊猫之乡</h3><p>大熊猫繁育研究基地，圆滚滚的国宝在这里卖萌、吃竹、打滚。</p>
+      </div>
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v6c0 3-2 5-4 5H8c-2 0-4-2-4-5z"/><path d="M10 4v2M14 4v2"/><path d="M8 15v4M12 15v4M16 15v4"/></svg></div>
+        <h3>火锅之都</h3><p>一锅红汤，滚烫人间；夜晚十点的成都，火锅依然翻涌。</p>
+      </div>
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.5 8a3 3 0 0 1-3 2.2h-7a3 3 0 0 1-3-2.2z"/><path d="M12 7V4M8 5.5 12 4l4 1.5"/><path d="M8 13.5c1 .8 2 1.2 4 1.2s3-.4 4-1.2"/></svg></div>
+        <h3>茶馆人生</h3><p>人民公园的鹤鸣茶社，一碗盖碗茶，就是一下午的巴适。</p>
+      </div>
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 3h8l2 4H6z"/><path d="M8 7c0 4 4 4 4 8 0-4 4-4 4-8"/><path d="M12 15v6"/></svg></div>
+        <h3>川剧变脸</h3><p>一张脸，千般戏；喷火、变脸，是川剧舞台上的绝活。</p>
+      </div>
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 9.5v3.5l2.2 1.6"/><path d="M4 4h4M16 4h4M12 2v2"/></svg></div>
+        <h3>巴适慢生活</h3><p>不慌不忙、安逸闲适，成都节奏教人把日子过成诗。</p>
+      </div>
+      <div class="kcard reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8 12 4l8 4v12H4z"/><path d="M4 8l8 4 8-4"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>市井烟火</h3><p>宽窄巷子、玉林路的小酒馆，烟火气藏在每一条街巷。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 人文 ===== -->
+<section id="culture">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Culture</div>
+      <h2 class="sec-title">人文底蕴</h2>
+      <p class="sec-desc">三千年城名未改、城址未迁，成都把历史酿成了日常。</p>
+    </div>
+    <div class="culture-grid">
+      <div class="culture-img reveal"><img src="assets/chuanju.jpg" alt="川剧变脸表演者" loading="lazy"></div>
+      <div class="culture-body reveal">
+        <h3>戏、茶、锦、诗，皆成成都</h3>
+        <p>
+          蜀地自古人文荟萃：<strong>川剧</strong>的变脸与吐火惊艳舞台，被列入国家级非物质文化遗产；街头巷尾的<strong>盖碗茶</strong>、长嘴壶，是成都人最松弛的社交方式。
+        </p>
+        <p style="margin-top:.8em">
+          汉时蜀锦名扬天下，故称“锦官城”；诗圣杜甫在浣花溪畔写下“晓看红湿处，花重锦官城”；金沙遗址的太阳神鸟，把成都的记忆拉回三千年前。
+        </p>
+        <div class="tags">
+          <span class="tag">川剧变脸</span>
+          <span class="tag">盖碗茶</span>
+          <span class="tag">蜀锦蜀绣</span>
+          <span class="tag">金沙遗址</span>
+          <span class="tag">杜甫草堂</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 美食 ===== -->
+<section id="food">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Cuisine</div>
+      <h2 class="sec-title">食在成都</h2>
+      <p class="sec-desc">麻、辣、鲜、香，成都把“吃”变成了一种生活方式。</p>
+    </div>
+    <div class="food-grid">
+      <div class="food-body reveal">
+        <h3>一锅红汤，滚烫人间</h3>
+        <p>
+          川菜百味，一菜一格、百菜百味。成都火锅以牛油、花椒、辣椒熬出醇厚红汤，毛肚、黄喉、鸭肠在沸汤里七上八下，是这座城市的社交底色。
+        </p>
+        <p style="margin-top:.8em">
+          街头巷尾，还有数不清的小吃与面食，从清晨到凌晨，总有一口热乎的等着你。
+        </p>
+        <div class="chips">
+          <span class="chip">火锅</span>
+          <span class="chip">串串香</span>
+          <span class="chip">担担面</span>
+          <span class="chip">钟水饺</span>
+          <span class="chip">龙抄手</span>
+          <span class="chip">夫妻肺片</span>
+          <span class="chip">甜水面</span>
+          <span class="chip">蛋烘糕</span>
+        </div>
+      </div>
+      <div class="food-img reveal"><img src="assets/hotpot.jpg" alt="成都火锅与各类菜品" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 风景 ===== -->
+<section id="places">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Places</div>
+      <h2 class="sec-title">游在成都</h2>
+      <p class="sec-desc">人文古迹、山水清幽、都市霓虹，成都处处是风景。</p>
+    </div>
+    <div class="pcards">
+      <div class="pcard reveal"><img src="assets/panda.jpg" alt="成都大熊猫繁育基地的大熊猫" loading="lazy"><div class="cap"><h3>大熊猫基地</h3><p>圆滚滚的国宝家园</p></div></div>
+      <div class="pcard reveal"><img src="assets/kuanzhai.jpg" alt="成都宽窄巷子" loading="lazy"><div class="cap"><h3>宽窄巷子</h3><p>老成都的市井记忆</p></div></div>
+      <div class="pcard reveal"><img src="assets/jinli.jpg" alt="成都锦里古街夜景" loading="lazy"><div class="cap"><h3>锦里 · 武侯祠</h3><p>红灯笼下的三国与烟火</p></div></div>
+      <div class="pcard reveal"><img src="assets/qingcheng.jpg" alt="青城山门楼" loading="lazy"><div class="cap"><h3>都江堰 · 青城山</h3><p>千年水利与“青城天下幽”</p></div></div>
+      <div class="pcard reveal"><img src="assets/dufu.jpg" alt="成都杜甫草堂" loading="lazy"><div class="cap"><h3>杜甫草堂</h3><p>诗圣浣花溪畔的草堂</p></div></div>
+      <div class="pcard reveal"><img src="assets/skyline.jpg" alt="成都天府广场与城市天际线" loading="lazy"><div class="cap"><h3>天府广场 · 天际线</h3><p>现代成都的会客厅</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 影像 ===== -->
+<section id="film">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Film</div>
+      <h2 class="sec-title">影像成都</h2>
+      <p class="sec-desc">一镜到底，看遍成都的山水、市井与烟火。</p>
+    </div>
+    <div class="player reveal">
+      <video controls preload="metadata" poster="assets/poster.jpg" aria-label="成都城市宣传片">
+        <source src="cd1.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+      </video>
+    </div>
+    <div class="film-note reveal">
+      <span class="n"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>成都城市宣传片</span>
+      <span class="n"><svg viewBox="0 0 24 24"><path d="M3 6h18M6 3h12"/><path d="M6 11h4M6 15h4"/><circle cx="15" cy="13" r="3"/><path d="M13.5 13h3"/></svg>约 5 分 35 秒 · 中英双语</span>
+      <span class="n"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>本页主视觉同源素材</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><span class="seal">蓉</span>成都 · 天府之国</div>
+    <div class="foot-sub">CHENGDU · LAND OF ABUNDANCE · 一座来了就不想走的城市</div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<!-- ===== 背景音乐 ===== -->
+<audio id="bgm" src="mingyue.mp3" preload="metadata"></audio>
+<div class="music-player" id="musicPlayer" aria-label="背景音乐播放器">
+  <span class="mi"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+  <span class="meta">
+    <span class="t">明月几时有</span>
+    <span class="s">蔡琴</span>
+  </span>
+  <button class="pp" id="musicBtn" aria-label="播放音乐">
+    <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  // 导航滚动效果
+  var nav = document.getElementById('siteNav');
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // 移动端菜单
+  var tg = document.getElementById('navToggle');
+  var menu = document.getElementById('mobileMenu');
+  function closeMenu(){ menu.classList.remove('show'); tg.classList.remove('open'); tg.setAttribute('aria-expanded','false'); }
+  tg.addEventListener('click', function(){
+    var open = menu.classList.toggle('show');
+    tg.classList.toggle('open', open);
+    tg.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+  // 回到顶部
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  // 背景音乐：点击播放/暂停（需用户手势，不自动播放）
+  var bgm = document.getElementById('bgm');
+  var mBtn = document.getElementById('musicBtn');
+  var iPlay = document.getElementById('iconPlay');
+  var iPause = document.getElementById('iconPause');
+  var mPlayer = document.getElementById('musicPlayer');
+  var playing = false;
+  function setPlaying(on){
+    playing = on;
+    iPlay.style.display = on ? 'none' : '';
+    iPause.style.display = on ? '' : 'none';
+    mBtn.setAttribute('aria-label', on ? '暂停音乐' : '播放音乐');
+  }
+  mBtn.addEventListener('click', function(){
+    if(playing){
+      bgm.pause(); setPlaying(false);
+    }else{
+      bgm.play().then(function(){ setPlaying(true); }).catch(function(){});
+    }
+  });
+  bgm.addEventListener('pause', function(){ setPlaying(false); });
+  bgm.addEventListener('ended', function(){ setPlaying(false); });
+
+  // 滚动揭示（尊重 reduced-motion）
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rev = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    rev.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  rev.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# 过程与临时文件（不推送）
+_shots/
+_frames/
+_parse_font.py
+_fonts.css
